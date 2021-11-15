@@ -6,6 +6,8 @@ This module provisions a CloudWatch log group encrypted with KMS.
 
 ```terraform
 module "encrypted_logs" {
+  source = "modules/encrypted_logs" // update when we've figured out how/if we will publish
+
   log_group_name = "encrypted-logs"
   tags = {
     environment = "staging"
