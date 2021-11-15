@@ -1,3 +1,9 @@
+locals {
+  // local.policy_attachment_quota will raise error during terraform plan if number of attachments exceeds 10
+  total_policy_attachments = length(var.policies) + length(var.policy_documents)
+  policy_attachment_quota  = coalesce(local.total_policy_attachments <= 10 ? "within quota" : null)
+}
+
 resource "aws_iam_role" "main" {
   name               = var.role_name
   description        = var.role_description
