@@ -6,6 +6,8 @@ This module provisions an IAM role that will be assumed by one or more AWS servi
 
 ```terraform
 module "service_role" {
+  source = "modules/service_role"
+
   role_name = "ecs-task-execution"
   role_description = "ECS Task Execution Role"
   services = ["ecs-tasks.amazonaws.com"]
